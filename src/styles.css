@@ -184,8 +184,16 @@
   animation: ship-sail 22s linear infinite;
   will-change: transform;
 }
-.hero-family { filter: drop-shadow(0 5px 6px rgb(15 23 42 / 12%)); }
-@media (max-width: 640px) { .hero-family { right: 0.25rem; bottom: 4.4rem; opacity: 0.9; } }
+@keyframes family-walk {
+  0% { transform: translateX(-260px); }
+  100% { transform: translateX(calc(100vw + 260px)); }
+}
+.hero-family {
+  filter: drop-shadow(0 5px 6px rgb(15 23 42 / 12%));
+  animation: family-walk 32s linear infinite;
+  will-change: transform;
+}
+@media (max-width: 640px) { .hero-family { left: 0; right: auto; bottom: 4.4rem; opacity: 0.9; } }
 .hero-ship-bob {
   animation: ship-bob 3.2s ease-in-out infinite;
 }
@@ -215,7 +223,7 @@
 .bird-wing:nth-child(3) { animation-delay: -0.8s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-sun, .hero-cloud, .hero-ship, .hero-ship-bob, .hero-wave, .float-soft, .hero-birds, .bird-wing {
+  .hero-sun, .hero-cloud, .hero-family, .hero-ship, .hero-ship-bob, .hero-wave, .float-soft, .hero-birds, .bird-wing {
     animation: none;
   }
 }
