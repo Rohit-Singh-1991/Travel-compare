@@ -242,21 +242,7 @@ function Index() {
           <Cloud className="h-7 w-7 text-white/70" />
         </div>
 
-        {/* Family enjoying the beach; decorative illustration is hidden from assistive technology. */}
-<div aria-hidden="true" className="hero-family pointer-events-none absolute bottom-[4.3rem] left-0 z-0">
-  <svg viewBox="0 0 230 120" className="h-20 w-40 sm:h-28 sm:w-56" fill="none">
-    <path d="M4 109 Q70 94 132 107 T226 103" stroke="#f7d794" strokeWidth="12" strokeLinecap="round"/>
-    <circle cx="34" cy="35" r="10" fill="#b96d43"/><path d="M26 34 Q27 20 39 26 L44 35" fill="#4b3428"/>
-    <path d="M21 47 L45 47 L40 92 L26 92 Z" fill="#f97316"/><path d="M27 56 L15 77 M39 56 L49 72 M29 91 L24 109 M39 91 L44 109" stroke="#b96d43" strokeWidth="6" strokeLinecap="round"/>
-    <circle cx="92" cy="44" r="11" fill="#d99a70"/><path d="M82 43 Q83 29 95 33 Q104 36 103 44" fill="#51392d"/>
-    <path d="M80 57 L103 57 L100 99 L84 99 Z" fill="#0f766e"/><path d="M84 62 L70 80 M99 62 L112 77 M86 98 L80 111 M98 98 L104 111" stroke="#d99a70" strokeWidth="6" strokeLinecap="round"/>
-    <circle cx="142" cy="66" r="8" fill="#b96d43"/><path d="M135 66 Q135 55 145 58 L150 66" fill="#4b3428"/>
-    <path d="M134 76 L151 76 L148 102 L137 102 Z" fill="#facc15"/><path d="M137 80 L128 91 M147 80 L156 90 M138 101 L134 111 M148 101 L152 111" stroke="#b96d43" strokeWidth="5" strokeLinecap="round"/>
-    <path d="M174 92 L174 42" stroke="#a16207" strokeWidth="3"/><path d="M174 42 L208 67 L174 67 Z" fill="#fb7185"/>
-  </svg>
-</div>
-
-{/* Sea + sailing ship */}
+        {/* Sea + sailing ship */}
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24">
           <div
             className="hero-wave absolute inset-x-0 bottom-0 h-16 opacity-80"
