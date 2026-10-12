@@ -24,6 +24,12 @@ export function flightStatus(p: TravelPackage): "included" | "excluded" | "unkno
   return p.flightStatus ?? "unknown";
 }
 
+export function estimatedTripTotal(p: TravelPackage, travelers: number): number | undefined {
+  if (!Number.isInteger(travelers) || travelers < 1) return undefined;
+  const unitPrice = totalPerPerson(p) ?? perPersonPrice(p);
+  return unitPrice === undefined ? undefined : unitPrice * travelers;
+}
+
 export function inr(value: number): string {
   return new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 2 }).format(value);
 }
