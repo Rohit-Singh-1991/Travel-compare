@@ -2,7 +2,7 @@ import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { comparePackages, type CompareResult, type TravelPackage } from "@/lib/packages.functions";
-import { flightStatus, perPersonPrice, totalPerPerson, inr } from "@/lib/package-pricing";
+import { flightStatus, perPersonPrice, totalPerPerson, estimatedTripTotal, inr } from "@/lib/package-pricing";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -243,7 +243,7 @@ function Index() {
         </div>
 
         {/* Family enjoying the beach; decorative illustration is hidden from assistive technology. */}
-<div aria-hidden="true" className="hero-family pointer-events-none absolute bottom-[4.3rem] right-[4%] z-0">
+<div aria-hidden="true" className="hero-family pointer-events-none absolute bottom-[4.3rem] left-0 z-0">
   <svg viewBox="0 0 230 120" className="h-20 w-40 sm:h-28 sm:w-56" fill="none">
     <path d="M4 109 Q70 94 132 107 T226 103" stroke="#f7d794" strokeWidth="12" strokeLinecap="round"/>
     <circle cx="34" cy="35" r="10" fill="#b96d43"/><path d="M26 34 Q27 20 39 26 L44 35" fill="#4b3428"/>
@@ -810,7 +810,7 @@ function PackagePrice({ packageData: p, travelers }: { packageData: TravelPackag
   const base = perPersonPrice(p);
   const total = totalPerPerson(p);
   const unit = total ?? base;
-  const tripTotal = unit !== undefined ? unit * travelers : undefined;
+  const tripTotal = estimatedTripTotal(p, travelers);
   const tax = total !== undefined && base !== undefined ? total - base : undefined;
   return (
     <div className="space-y-1 border-y border-border py-3">
