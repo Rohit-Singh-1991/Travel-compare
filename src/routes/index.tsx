@@ -551,6 +551,13 @@ function Index() {
               )}
             </div>
 
+            {result.errors.some((e) => e.error === "Travel search is not configured") && (
+              <div className="mt-4 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
+                <p className="font-semibold">Live package search needs configuration</p>
+                <p className="mt-1">Add FIRECRAWL_API_KEY to this Vercel project’s Production environment variables, then redeploy. PackCompare will not invent package prices while live search is unavailable.</p>
+              </div>
+            )}
+
             <p className="mt-2 text-sm text-muted-foreground">Provider-listed prices, not confirmed booking quotes. Dates, travelers and flight choices may need selecting again on the provider’s page.</p>
 
             {result.packages.length > 0 && (
