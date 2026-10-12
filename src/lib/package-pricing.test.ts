@@ -1,11 +1,17 @@
 import { describe, expect, it } from "vitest";
-import { perPersonPrice, totalPerPerson, flightStatus } from "./package-pricing";
+import { perPersonPrice, totalPerPerson, estimatedTripTotal, flightStatus } from "./package-pricing";
 import type { TravelPackage } from "./packages.functions";
 
 const packageData: TravelPackage = { source: "Holidify", title: "Goa", currency: "INR", priceNumber: 10000, priceBasis: "per-person" };
 
 describe("source-based package pricing", () => {
   it("does not guess undisclosed taxes", () => expect(totalPerPerson(packageData)).toBeUndefined());
+  it("recalculates the estimated trip total when traveler count changes", () => {
+    const priced = { ...packageData, taxStatus: "included" as const };
+    expect(estimatedTripTotal(priced, 2)).toBe(20000);
+    expect(estimatedTripTotal(priced, 4)).toBe(40000);
+    expect(estimatedTripTotal(priced, 0)).toBeUndefined();
+  });
   it("uses explicit tax-inclusive totals", () => expect(totalPerPerson({ ...packageData, taxStatus: "included" })).toBe(10000));
   it("adds only disclosed tax amounts", () => expect(totalPerPerson({ ...packageData, taxStatus: "excluded", taxAmount: 500 })).toBe(10500));
   it("does not assume a GST rate", () => expect(totalPerPerson({ ...packageData, taxStatus: "excluded", taxLabel: "5% GST extra" })).toBeUndefined());
